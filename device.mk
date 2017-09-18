@@ -191,6 +191,13 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gps/etc/sap.conf:system/etc/sap.conf \
     $(LOCAL_PATH)/gps/etc/xtwifi.conf:system/etc/xtwifi.conf
 
+
+#Guyver
+PRODUCT_PACKAGES += \
+    init.ngb.rc \
+    init.spectrum.rc \
+    init.spectrum.sh
+
 # Input
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/uinput-fpc.idc:system/usr/idc/uinput-fpc.idc
@@ -263,9 +270,9 @@ PRODUCT_PACKAGES += \
     libstagefrighthw
 
 # OTA Updates
-PRODUCT_PACKAGES += \
-    AEXOTA \
-    libbypass
+#PRODUCT_PACKAGES += \
+#    AEXOTA \
+#    libbypass
 
 # Power
 PRODUCT_PACKAGES += \
