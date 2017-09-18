@@ -194,7 +194,6 @@ PRODUCT_COPY_FILES += \
 
 #Guyver
 PRODUCT_PACKAGES += \
-    init.ngb.rc \
     init.spectrum.rc \
     init.spectrum.sh
 
