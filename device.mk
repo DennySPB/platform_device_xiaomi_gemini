@@ -121,7 +121,7 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    Snap
+    Mi5CameraCalibrate
 
 # Device config scripts
 PRODUCT_PACKAGES += \
@@ -195,6 +195,7 @@ PRODUCT_COPY_FILES += \
 #Guyver
 PRODUCT_PACKAGES += \
     init.spectrum.rc \
+    init.ngb.rc \
     init.spectrum.sh
 
 # Input
