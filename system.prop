@@ -167,3 +167,6 @@ wifi.interface=wlan0
 ro.max.fling_velocity=14000
 ro.min.fling_velocity=1000
 ro.min_pointer_dur=1
+
+#camera calibration
+camera.hal1.packagelist=dobragab.sch.bme.hu.cit2
