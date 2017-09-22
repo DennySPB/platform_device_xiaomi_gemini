@@ -64,7 +64,7 @@ on property:persist.spectrum.profile=0
     write /dev/stune/top-app/schedtune.boost 12
     write /dev/stune/top-app/schedtune.prefer_idle 1
     write /dev/stune/schedtune.boost 10
-
+    write /sys/module/cpu_boost/parameters/dynamic_stune_boost 12
 # Performance 
 on property:persist.spectrum.profile=1
     write /dev/voxpopuli/enable_interaction_boost   "1"
@@ -113,6 +113,7 @@ on property:persist.spectrum.profile=1
     write /dev/stune/top-app/schedtune.boost 15
     write /dev/stune/top-app/schedtune.prefer_idle 1
     write /dev/stune/schedtune.boost 10
+    write /sys/module/cpu_boost/parameters/dynamic_stune_boost 15
 
 # Battery
 on property:persist.spectrum.profile=2
@@ -165,6 +166,7 @@ on property:persist.spectrum.profile=2
     write /dev/stune/top-app/schedtune.boost 0
     write /dev/stune/top-app/schedtune.prefer_idle 1
     write /dev/stune/schedtune.boost 0
+    write /sys/module/cpu_boost/parameters/dynamic_stune_boost 0
 
 # Gaming
 on property:persist.spectrum.profile=3
@@ -213,5 +215,4 @@ on property:persist.spectrum.profile=3
     write /dev/stune/top-app/schedtune.boost 0
     write /dev/stune/top-app/schedtune.prefer_idle 1
     write /dev/stune/schedtune.boost 0
-
-
+    write /sys/module/cpu_boost/parameters/dynamic_stune_boost 0
