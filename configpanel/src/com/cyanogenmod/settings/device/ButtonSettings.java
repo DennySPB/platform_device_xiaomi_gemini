@@ -17,14 +17,54 @@
 package com.cyanogenmod.settings.device;
 
 import android.os.Bundle;
+import android.app.IThemeCallback;
+import android.app.ThemeManager;
+import android.content.Context;
+import android.provider.Settings.Secure;
+import android.os.Handler;
+import android.os.Looper;
+
 
 import com.cyanogenmod.settings.device.utils.NodePreferenceActivity;
 
 import com.android.internal.util.cm.ScreenType;
 
 public class ButtonSettings extends NodePreferenceActivity {
+    private int mTheme;
+
+    private ThemeManager mThemeManager;
+    private final IThemeCallback mThemeCallback = new IThemeCallback.Stub() {
+
+        @Override
+        public void onThemeChanged(int themeMode, int color) {
+            onCallbackAdded(themeMode, color);
+            ButtonSettings.this.runOnUiThread(() -> {
+                ButtonSettings.this.recreate();
+            });
+        }
+
+        @Override
+        public void onCallbackAdded(int themeMode, int color) {
+            mTheme = color;
+        }
+    };
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
+	  final int themeMode = Secure.getInt(getContentResolver(),
+                Secure.THEME_PRIMARY_COLOR, 0);
+        final int accentColor = Secure.getInt(getContentResolver(),
+                Secure.THEME_ACCENT_COLOR, 0);
+        mThemeManager = (ThemeManager) getSystemService(Context.THEME_SERVICE);
+        if (mThemeManager != null) {
+            mThemeManager.addCallback(mThemeCallback);
+        }
+        if (themeMode != 0 || accentColor != 0) {
+            getTheme().applyStyle(mTheme, true);
+        }
+        if (themeMode == 2) {
+            getTheme().applyStyle(R.style.settings_pixel_theme, true);
+        }
         super.onCreate(savedInstanceState);
         addPreferencesFromResource(R.xml.button_panel);
     }
