@@ -59,6 +59,7 @@ on property:persist.spectrum.profile=0
     write /sys/block/sda/queue/scheduler tripndroid
     write /sys/block/sde/queue/scheduler tripndroid
     write /sys/module/workqueue/parameters/power_efficient Y
+    write /sys/module/scsi_mod/parameters/use_blk_mq Y
     write /sys/kernel/sched/arch_power 1
     write /dev/stune/background/schedtune.boost 0
     write /dev/stune/background/schedtune.prefer_idle 0
@@ -100,7 +101,7 @@ on property:persist.spectrum.profile=1
     write /sys/module/msm_thermal/parameters/enabled Y
     write /sys/module/msm_thermal/parameters/temp_threshold 85
     write /sys/module/msm_thermal/vdd_restriction/enabled 0
-    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 680000000                                                    
+    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000                                                    
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 315000000
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
@@ -111,6 +112,7 @@ on property:persist.spectrum.profile=1
     write /sys/block/dm-0/queue/scheduler fiops
     write /sys/block/sda/queue/scheduler fiops
     write /sys/block/sde/queue/scheduler fiops
+    write /sys/module/scsi_mod/parameters/use_blk_mq Y
     write /sys/module/workqueue/parameters/power_efficient N
     write /sys/kernel/sched/arch_power 0
     write /dev/stune/background/schedtune.boost 0
@@ -165,6 +167,7 @@ on property:persist.spectrum.profile=2
     write /sys/block/dm-0/queue/scheduler noop
     write /sys/block/sda/queue/scheduler noop
     write /sys/block/sde/queue/scheduler noop
+    write /sys/module/scsi_mod/parameters/use_blk_mq N
     write /sys/module/workqueue/parameters/power_efficient Y
     write /sys/kernel/sched/arch_power 1
     write /dev/stune/background/schedtune.boost 0
@@ -207,7 +210,7 @@ on property:persist.spectrum.profile=3
     write /sys/module/msm_thermal/parameters/enabled Y
     write /sys/module/msm_thermal/parameters/temp_threshold 65
     write /sys/module/msm_thermal/vdd_restriction/enabled 0
-    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 680000000                                                    
+    write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000                                                    
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 315000000
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
@@ -218,6 +221,7 @@ on property:persist.spectrum.profile=3
     write /sys/block/dm-0/queue/scheduler fiops
     write /sys/block/sda/queue/scheduler fiops
     write /sys/block/sde/queue/scheduler fiops
+    write /sys/module/scsi_mod/parameters/use_blk_mq Y
     write /sys/module/workqueue/parameters/power_efficient N
     write /sys/kernel/sched/arch_power 0
     write /dev/stune/background/schedtune.boost 0
