@@ -33,7 +33,7 @@ on boot
     write /dev/stune/schedtune.prefer_idle 0
 
     # Thermal
-    write /sys/module/msm_thermal/core_control/enabled 0
+    write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/enabled Y
     write /sys/module/msm_thermal/parameters/temp_threshold 45
     write /sys/module/msm_thermal/vdd_restriction/enabled 0
