@@ -500,9 +500,9 @@ on property:sys.boot_completed=1
     chmod 0644 /d/rpm_master_stats
     write /dev/kmsg "Boot completed "
     # end boot time fs tune
-    write /sys/block/dm-0/queue/read_ahead_kb 512
-    write /sys/block/sda/queue/read_ahead_kb 512
-    write /sys/block/sde/queue/read_ahead_kb 512
+    write /sys/block/dm-0/queue/read_ahead_kb 1024
+    write /sys/block/sda/queue/read_ahead_kb 1024
+    write /sys/block/sde/queue/read_ahead_kb 1024
     write /sys/block/dm-0/queue/scheduler tripndroid
     write /sys/block/sda/queue/scheduler tripndroid
     write /sys/block/sde/queue/scheduler tripndroid
