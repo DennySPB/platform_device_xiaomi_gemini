@@ -205,6 +205,9 @@ include device/qcom/sepolicy/sepolicy.mk
 
 BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
+#Realtime battery info
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
+
 # Sensors
 USE_SENSOR_MULTI_HAL := true
 
