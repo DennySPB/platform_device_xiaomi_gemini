@@ -672,4 +672,8 @@
          Depends on Keypress Boost -->
     <integer name="fpunlockboost_duration">1200</integer>
 
+    <!-- Support in Surfaceflinger for blur layers.
+         NOTE: This requires additional hardware-specific code. -->
+    <bool name="config_uiBlurEnabled">true</bool>
+
 </resources>
