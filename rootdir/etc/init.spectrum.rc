@@ -9,7 +9,6 @@ on property:sys.boot_completed=1
    exec u:r:su:s0 root root -- /init.spectrum.sh
    # Enable Spectrum support
    setprop spectrum.support 1
-   
    setprop persist.spectrum.kernel AEX.mod
 
 # Balance (default profile)
@@ -30,31 +29,23 @@ on property:persist.spectrum.profile=0
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1593600
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_min_freq 307200
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2150400
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 1000
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 1000
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 1
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 1000
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 1000
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/iowait_boost_enable 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 500
+    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 10000
+    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 2000
+    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 5000
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/enabled 0
-    write /sys/module/msm_thermal/parameters/temp_threshold 45
-    write /sys/module/msm_thermal/parameters/core_limit_temp_degC 55
     write /sys/module/msm_thermal/vdd_restriction/enabled 0
     write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 133000000
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
-    write /sys/module/adreno_idler/parameters/adreno_idler_active Y
-    write /sys/module/adreno_idler/parameters/adreno_idler_downdifferential 20
-    write /sys/module/adreno_idler/parameters/adreno_idler_idlewait 20
-    write /sys/module/adreno_idler/parameters/adreno_idler_idleworkload 6000
-    write /sys/block/dm-0/queue/read_ahead_kb 1024
-    write /sys/block/sda/queue/read_ahead_kb 1024
-    write /sys/block/sde/queue/read_ahead_kb 1024
-    write /sys/block/dm-0/queue/scheduler tripndroid
-    write /sys/block/sda/queue/scheduler tripndroid
-    write /sys/block/sde/queue/scheduler tripndroid
+    write /sys/block/dm-0/queue/read_ahead_kb 512
+    write /sys/block/sda/queue/read_ahead_kb 512
+    write /sys/block/sde/queue/read_ahead_kb 512
+    write /sys/block/dm-0/queue/scheduler cfq
+    write /sys/block/sda/queue/scheduler cfq
+    write /sys/block/sde/queue/scheduler cfq
     write /sys/module/workqueue/parameters/power_efficient Y
     write /sys/module/scsi_mod/parameters/use_blk_mq Y
     write /sys/kernel/sched/arch_power 1
@@ -85,23 +76,18 @@ on property:persist.spectrum.profile=1
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2150400
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 50000
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 500
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 1
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 50000
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 500
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/iowait_boost_enable 1
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/enabled 0
-    write /sys/module/msm_thermal/parameters/temp_threshold 70
-    write /sys/module/msm_thermal/parameters/core_limit_temp_degC 80
     write /sys/module/msm_thermal/vdd_restriction/enabled 0
     write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 315000000
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
-    write /sys/module/adreno_idler/parameters/adreno_idler_active N
-    write /sys/block/dm-0/queue/read_ahead_kb 2048
-    write /sys/block/sda/queue/read_ahead_kb 2048
-    write /sys/block/sde/queue/read_ahead_kb 2048
+    write /sys/block/dm-0/queue/read_ahead_kb 1024
+    write /sys/block/sda/queue/read_ahead_kb 1024
+    write /sys/block/sde/queue/read_ahead_kb 1024
     write /sys/block/dm-0/queue/scheduler fiops
     write /sys/block/sda/queue/scheduler fiops
     write /sys/block/sde/queue/scheduler fiops
@@ -136,26 +122,18 @@ on property:persist.spectrum.profile=2
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1363200
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 500
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 2000
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 0
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 500
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 2000
-    write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/iowait_boost_enable 0
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/enabled 0
-    write /sys/module/msm_thermal/parameters/temp_threshold 45
-    write /sys/module/msm_thermal/parameters/core_limit_temp_degC 55
     write /sys/module/msm_thermal/vdd_restriction/enabled 0
     write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 401800000
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 133000000
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor powersave
-    write /sys/module/adreno_idler/parameters/adreno_idler_active Y
-    write /sys/module/adreno_idler/parameters/adreno_idler_downdifferential 25
-    write /sys/module/adreno_idler/parameters/adreno_idler_idlewait 10
-    write /sys/module/adreno_idler/parameters/adreno_idler_idleworkload 8000
-    write /sys/block/dm-0/queue/read_ahead_kb 512
-    write /sys/block/sda/queue/read_ahead_kb 512
-    write /sys/block/sde/queue/read_ahead_kb 512
+    write /sys/block/dm-0/queue/read_ahead_kb 256
+    write /sys/block/sda/queue/read_ahead_kb 256
+    write /sys/block/sde/queue/read_ahead_kb 256
     write /sys/block/dm-0/queue/scheduler noop
     write /sys/block/sda/queue/scheduler noop
     write /sys/block/sde/queue/scheduler noop
@@ -172,7 +150,7 @@ on property:persist.spectrum.profile=2
 
 # Gaming
 on property:persist.spectrum.profile=3
-   write /dev/voxpopuli/enable_interaction_boost   "1"
+   write /dev/voxpopuli/enable_interaction_boost    "1"
     write /dev/voxpopuli/fling_min_boost_duration   "500"
     write /dev/voxpopuli/fling_max_boost_duration   "3500"
     write /dev/voxpopuli/fling_boost_topapp         "10"
@@ -190,32 +168,21 @@ on property:persist.spectrum.profile=3
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 2150400
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 2000
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 500
-    write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 1
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 2000
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 500
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/enabled 0
-    write /sys/module/msm_thermal/parameters/temp_threshold 50
-    write /sys/module/msm_thermal/parameters/core_limit_temp_degC 65
     write /sys/module/msm_thermal/vdd_restriction/enabled 0
     write /sys/class/kgsl/kgsl-3d0/devfreq/max_freq 624000000
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 315000000
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 4
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
-    write /sys/module/adreno_idler/parameters/adreno_idler_active N
-    write /sys/block/dm-0/queue/read_ahead_kb 2048
-    write /sys/block/sda/queue/read_ahead_kb 2048
-    write /sys/block/sde/queue/read_ahead_kb 2048
+    write /sys/block/dm-0/queue/read_ahead_kb 1024
+    write /sys/block/sda/queue/read_ahead_kb 1024
+    write /sys/block/sde/queue/read_ahead_kb 1024
     write /sys/block/dm-0/queue/scheduler fiops
     write /sys/block/sda/queue/scheduler fiops
     write /sys/block/sde/queue/scheduler fiops
     write /sys/module/scsi_mod/parameters/use_blk_mq Y
     write /sys/module/workqueue/parameters/power_efficient N
     write /sys/kernel/sched/arch_power 0
-    write /dev/stune/background/schedtune.boost 0
-    write /dev/stune/background/schedtune.prefer_idle 0
-    write /dev/stune/foreground/schedtune.boost 0
-    write /dev/stune/foreground/schedtune.prefer_idle 1
-    write /dev/stune/top-app/schedtune.boost 0
-    write /dev/stune/top-app/schedtune.prefer_idle 1
-    write /dev/stune/schedtune.boost 0
