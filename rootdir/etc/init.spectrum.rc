@@ -14,12 +14,12 @@ on property:sys.boot_completed=1
 # Balance (default profile)
 on property:persist.spectrum.profile=0
     write /dev/voxpopuli/enable_interaction_boost   "1"
-    write /dev/voxpopuli/fling_min_boost_duration   "250"
+    write /dev/voxpopuli/fling_min_boost_duration   "500"
     write /dev/voxpopuli/fling_max_boost_duration   "2500"
     write /dev/voxpopuli/fling_boost_topapp         "10"
     write /dev/voxpopuli/fling_min_freq_big         "1036"
-    write /dev/voxpopuli/fling_min_freq_little      "1036"
-    write /dev/voxpopuli/touch_boost_duration       "250"
+    write /dev/voxpopuli/fling_min_freq_little      "1113"
+    write /dev/voxpopuli/touch_boost_duration       "350"
     write /dev/voxpopuli/touch_boost_topapp         "0"
     write /dev/voxpopuli/touch_min_freq_big         "1036"
     write /dev/voxpopuli/touch_min_freq_little      "1036"
@@ -33,9 +33,6 @@ on property:persist.spectrum.profile=0
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 10000
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 2000
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 5000
-    write /sys/module/cpu_boost/parameters/input_boost_enabled 1
-    write /sys/module/cpu_boost/parameters/input_boost_freq "0:960000 2:979200"
-    write /sys/module/cpu_boost/parameters/input_boost_ms 30
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/enabled 0
     write /sys/module/msm_thermal/vdd_restriction/enabled 0
@@ -43,9 +40,9 @@ on property:persist.spectrum.profile=0
     write /sys/class/kgsl/kgsl-3d0/devfreq/min_freq 133000000
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 6
     write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
-    write /sys/block/dm-0/queue/read_ahead_kb 512
-    write /sys/block/sda/queue/read_ahead_kb 512
-    write /sys/block/sde/queue/read_ahead_kb 512
+    write /sys/block/dm-0/queue/read_ahead_kb 256
+    write /sys/block/sda/queue/read_ahead_kb 256
+    write /sys/block/sde/queue/read_ahead_kb 256
     write /sys/block/dm-0/queue/scheduler cfq
     write /sys/block/sda/queue/scheduler cfq
     write /sys/block/sde/queue/scheduler cfq
@@ -62,7 +59,7 @@ on property:persist.spectrum.profile=0
 # Performance 
 on property:persist.spectrum.profile=1
     write /dev/voxpopuli/enable_interaction_boost   "1"
-    write /dev/voxpopuli/fling_min_boost_duration   "500"
+    write /dev/voxpopuli/fling_min_boost_duration   "750"
     write /dev/voxpopuli/fling_max_boost_duration   "3500"
     write /dev/voxpopuli/fling_boost_topapp         "10"
     write /dev/voxpopuli/fling_min_freq_big         "1113"
@@ -81,9 +78,6 @@ on property:persist.spectrum.profile=1
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 500
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 50000
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 500
-    write /sys/module/cpu_boost/parameters/input_boost_enabled 1
-    write /sys/module/cpu_boost/parameters/input_boost_freq "0:1363200 2:1363200"
-    write /sys/module/cpu_boost/parameters/input_boost_ms 50
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/enabled 0
     write /sys/module/msm_thermal/vdd_restriction/enabled 0
@@ -130,7 +124,6 @@ on property:persist.spectrum.profile=2
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 2000
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 500
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 2000
-    write /sys/module/cpu_boost/parameters/input_boost_enabled 0
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/enabled 0
     write /sys/module/msm_thermal/vdd_restriction/enabled 0
@@ -177,9 +170,6 @@ on property:persist.spectrum.profile=3
     write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 500
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 2000
     write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 500
-    write /sys/module/cpu_boost/parameters/input_boost_enabled 1
-    write /sys/module/cpu_boost/parameters/input_boost_freq "0:960000 2:1363200"
-    write /sys/module/cpu_boost/parameters/input_boost_ms 30
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/enabled 0
     write /sys/module/msm_thermal/vdd_restriction/enabled 0

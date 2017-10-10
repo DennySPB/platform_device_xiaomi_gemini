@@ -133,11 +133,6 @@ write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 5000
 # re-enable thermal hotplug
 write /sys/module/msm_thermal/core_control/enabled 1
 
-# input boost configuration
-write /sys/module/cpu_boost/parameters/input_boost_enabled 1
-write /sys/module/cpu_boost/parameters/input_boost_freq "0:960000 2:979200"
-write /sys/module/cpu_boost/parameters/input_boost_ms 30
-
 # Setting b.L scheduler parameters
 write /proc/sys/kernel/sched_boost 0
 write /proc/sys/kernel/sched_migration_fixup 1
