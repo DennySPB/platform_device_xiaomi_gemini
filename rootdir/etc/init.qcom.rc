@@ -282,6 +282,9 @@ on boot
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
+    start iop
+
+
 on charger
     wait /dev/block/bootdevice/by-name/system
     mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
@@ -444,6 +447,9 @@ on post-fs-data
     mkdir /data/system/swap 0770 root system
     chmod 2770 /data/system/swap
 
+    #Create IOP  deamon related dirs
+    mkdir /data/misc/iop 0770 root system
+
 on property:sys.boot_completed=1
     # Disable boosting
     write /proc/sys/kernel/sched_boost 0
@@ -544,6 +550,14 @@ service rmt_storage /system/bin/rmt_storage
 service tftp_server /system/bin/tftp_server
     class core
     user root
+    writepid /dev/cpuset/system-background/tasks
+
+service iop /system/bin/iop
+    class main
+    user root
+    group root
+    disabled
+    socket iop seqpacket 0666 root system
     writepid /dev/cpuset/system-background/tasks
 
 on property:wc_transport.start_hci=true
