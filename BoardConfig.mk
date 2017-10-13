@@ -58,7 +58,7 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 #EAS kernel build definitions
 TARGET_KERNEL_CONFIG := mod_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/eas_msm8996
-KERNEL_TOOLCHAIN := /home/android/aex/kernel/xiaomi/eas_msm8996/android-toolchain-arm64/bin
+KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/kernel/xiaomi/eas_msm8996/android-toolchain-arm64/bin
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 
 
