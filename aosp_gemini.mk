@@ -46,6 +46,4 @@ TARGET_VENDOR := Xiaomi
 SET_V4A := true
 TARGET_NO_DSPMANAGER := true
 TARGET_BOOT_ANIMATION_RES := 1080
-#DEFAULT_ROOT_METHOD := magisk
-#SET_DMOD := false
-#TARGET_PREBUILT_KERNEL="/home/android/aex/kernel/xiaomi/b-b_msm8996/arch/arm64/boot/Image.gz-dtb"
+TARGET_USES_CUSTOM_CAMERA := true
