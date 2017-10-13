@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Mi5CameraCalibrate</string>
+    <string name="calibrate_instructions">Инструкции по тестированию: \n1.Нажмите кнопку калибровки ниже, чтобы начать калибровку OIS.
+    </string>
+    <string name="calibrate">Калибровать</string>
+    <string name="calibrate_success">Калибровка завершена</string>
+</resources>
