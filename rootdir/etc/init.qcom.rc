@@ -42,8 +42,6 @@ on early-init
     write /sys/block/zram0/comp_algorithm lz4
 
 on init
-    # Create Power HAL tunables
-    mkdir /dev/voxpopuli 0555 system system
     
     export LD_SHIM_LIBS /system/vendor/lib64/lib-imsvt.so|libshims_ims.so
 
@@ -116,38 +114,6 @@ on boot
     write /dev/stune/top-app/schedtune.boost 0
     write /dev/stune/top-app/schedtune.prefer_idle 1
     
-    # Set Power HAL tunables
-    write /dev/voxpopuli/enable_interaction_boost   1
-    write /dev/voxpopuli/fling_min_boost_duration   250
-    write /dev/voxpopuli/fling_max_boost_duration   2500
-    write /dev/voxpopuli/fling_boost_topapp         10
-    write /dev/voxpopuli/fling_min_freq_big         1036
-    write /dev/voxpopuli/fling_min_freq_little      1036
-    write /dev/voxpopuli/touch_boost_duration       250
-    write /dev/voxpopuli/touch_boost_topapp         0
-    write /dev/voxpopuli/touch_min_freq_big         1036
-    write /dev/voxpopuli/touch_min_freq_little      1036
-    chmod 0644 /dev/voxpopuli/enable_interaction_boost
-    chmod 0644 /dev/voxpopuli/fling_min_boost_duration
-    chmod 0644 /dev/voxpopuli/fling_max_boost_duration
-    chmod 0644 /dev/voxpopuli/fling_boost_topapp      
-    chmod 0644 /dev/voxpopuli/fling_min_freq_big      
-    chmod 0644 /dev/voxpopuli/fling_min_freq_little   
-    chmod 0644 /dev/voxpopuli/touch_boost_duration    
-    chmod 0644 /dev/voxpopuli/touch_boost_topapp      
-    chmod 0644 /dev/voxpopuli/touch_min_freq_big      
-    chmod 0644 /dev/voxpopuli/touch_min_freq_little   
-    chown system system /dev/voxpopuli/enable_interaction_boost
-    chown system system /dev/voxpopuli/fling_min_boost_duration
-    chown system system /dev/voxpopuli/fling_max_boost_duration
-    chown system system /dev/voxpopuli/fling_boost_topapp      
-    chown system system /dev/voxpopuli/fling_min_freq_big      
-    chown system system /dev/voxpopuli/fling_min_freq_little   
-    chown system system /dev/voxpopuli/touch_boost_duration    
-    chown system system /dev/voxpopuli/touch_boost_topapp      
-    chown system system /dev/voxpopuli/touch_min_freq_big      
-    chown system system /dev/voxpopuli/touch_min_freq_little  
-
     # Enable sched boost
     write /proc/sys/kernel/sched_boost 1
 
@@ -469,10 +435,10 @@ on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
     # end boot time fs tune
 
-    write /sys/block/sda/queue/read_ahead_kb 512
-    write /sys/block/sda/queue/nr_requests 512
-    write /sys/block/dm-0/queue/read_ahead_kb 512
-    write /sys/block/dm-1/queue/read_ahead_kb 512
+    write /sys/block/sda/queue/read_ahead_kb 256
+    write /sys/block/sda/queue/nr_requests 256
+    write /sys/block/dm-0/queue/read_ahead_kb 256
+    write /sys/block/dm-1/queue/read_ahead_kb 256
     write /sys/block/sda/queue/iostats 0
 
     write /sys/block/sda/queue/scheduler bfq
@@ -487,17 +453,6 @@ on property:sys.boot_completed=1
     write /dev/stune/schedtune.boost 10
 
     # Set Misc
-
-    write /dev/voxpopuli/enable_interaction_boost   "1"
-    write /dev/voxpopuli/fling_min_boost_duration   "500"
-    write /dev/voxpopuli/fling_max_boost_duration   "2500"
-    write /dev/voxpopuli/fling_boost_topapp         "10"
-    write /dev/voxpopuli/fling_min_freq_big         "1036"
-    write /dev/voxpopuli/fling_min_freq_little      "1113"
-    write /dev/voxpopuli/touch_boost_duration       "350"
-    write /dev/voxpopuli/touch_boost_topapp         "5"
-    write /dev/voxpopuli/touch_min_freq_big         "1036"
-    write /dev/voxpopuli/touch_min_freq_little      "1036"
 
     write /sys/kernel/sched/arch_power 1
     write /sys/kernel/sched/gentle_fair_sleepers 0

@@ -13,12 +13,6 @@ function copy() {
 
 ################################################################################
 
-#VOX POPULI#
-on init
-
-    # Create Power HAL tunables
-    mkdir /dev/voxpopuli 0555 system system
-
 on boot
     # update cpusets now that processors are up
     write /dev/cpuset/top-app/cpus 0-3
@@ -45,40 +39,6 @@ on boot
     write /dev/stune/top-app/schedtune.prefer_idle 1
     write /dev/stune/schedtune.boost 0
     write /dev/stune/schedtune.prefer_idle 0
-
-    # Set Power HAL tunables
-
-    write /dev/voxpopuli/enable_interaction_boost   1
-    write /dev/voxpopuli/fling_min_boost_duration   250
-    write /dev/voxpopuli/fling_max_boost_duration   2500
-    write /dev/voxpopuli/fling_boost_topapp         10
-    write /dev/voxpopuli/fling_min_freq_big         1036
-    write /dev/voxpopuli/fling_min_freq_little      1036
-    write /dev/voxpopuli/touch_boost_duration       250
-    write /dev/voxpopuli/touch_boost_topapp         0
-    write /dev/voxpopuli/touch_min_freq_big         1036
-    write /dev/voxpopuli/touch_min_freq_little      1036
-    chmod 0644 /dev/voxpopuli/enable_interaction_boost
-    chmod 0644 /dev/voxpopuli/fling_min_boost_duration
-    chmod 0644 /dev/voxpopuli/fling_max_boost_duration
-    chmod 0644 /dev/voxpopuli/fling_boost_topapp
-    chmod 0644 /dev/voxpopuli/fling_min_freq_big
-    chmod 0644 /dev/voxpopuli/fling_min_freq_little
-    chmod 0644 /dev/voxpopuli/touch_boost_duration
-    chmod 0644 /dev/voxpopuli/touch_boost_topapp
-    chmod 0644 /dev/voxpopuli/touch_min_freq_big
-    chmod 0644 /dev/voxpopuli/touch_min_freq_little
-    chown system system /dev/voxpopuli/enable_interaction_boost
-    chown system system /dev/voxpopuli/fling_min_boost_duration
-    chown system system /dev/voxpopuli/fling_max_boost_duration
-    chown system system /dev/voxpopuli/fling_boost_topapp
-    chown system system /dev/voxpopuli/fling_min_freq_big
-    chown system system /dev/voxpopuli/fling_min_freq_little
-    chown system system /dev/voxpopuli/touch_boost_duration
-    chown system system /dev/voxpopuli/touch_boost_topapp
-    chown system system /dev/voxpopuli/touch_min_freq_big
-    chown system system /dev/voxpopuli/touch_min_freq_little
-
 
 # disable thermal hotplug to switch governor
 write /sys/module/msm_thermal/core_control/enabled 0
@@ -126,9 +86,11 @@ write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "schedutil"
 
 # set schedutil adjustments
 write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/up_rate_limit_us 500
-write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 10000
+write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/down_rate_limit_us 5000
+write /sys/devices/system/cpu/cpu0/cpufreq/schedutil/iowait_boost_enable 1
 write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/up_rate_limit_us 2000
 write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/down_rate_limit_us 5000
+write /sys/devices/system/cpu/cpu2/cpufreq/schedutil/iowait_boost_enable 1
 
 # re-enable thermal hotplug
 write /sys/module/msm_thermal/core_control/enabled 1
