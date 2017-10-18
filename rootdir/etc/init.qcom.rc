@@ -459,7 +459,11 @@ on property:sys.boot_completed=1
     
     # Disable FSync
     write /sys/module/sync/parameters/fsync_enabled N
- 
+
+    #LMK
+    write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 81250
+    write /sys/module/lowmemorykiller/parameters/minfree "14746,18432,22118,25805,40000,55000"
+
     # Disable some wakelocks
     write /sys/module/wakeup/parameters/enable_ipa_ws N
     write /sys/module/wakeup/parameters/enable_netlink_ws N
@@ -467,7 +471,6 @@ on property:sys.boot_completed=1
     write /sys/module/wakeup/parameters/enable_timerfd_ws N
     write /sys/module/wakeup/parameters/enable_wlan_extscan_wl_ws N
     write /sys/module/wakeup/parameters/enable_wlan_ws N
-
 
     # CPE fw_name used by sound trigger HAL
     chown media audio /sys/kernel/wcd_cpe0/fw_name
