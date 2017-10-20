@@ -7,24 +7,15 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.panel.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.panel.sh
+LOCAL_SRC_FILES    := init.panel.sh
 LOCAL_MODULE_PATH  := $(TARGET_OUT_EXECUTABLES)
-include $(BUILD_PREBUILT)
-
-# Device init scripts
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init.power.sh
-LOCAL_MODULE_TAGS  := optional eng
-LOCAL_MODULE_CLASS := EXECUTABLES
-LOCAL_SRC_FILES    := bin/init.power.sh
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE       := fstab.qcom
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/fstab.qcom
+LOCAL_SRC_FILES    := fstab.qcom
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
@@ -32,7 +23,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.rc
+LOCAL_SRC_FILES    := init.qcom.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 LOCAL_REQUIRED_MODULES := init.power.sh
 include $(BUILD_PREBUILT)
@@ -41,7 +32,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.sensors.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.sensors.sh
+LOCAL_SRC_FILES    := init.qcom.sensors.sh
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
@@ -49,7 +40,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.usb.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.usb.rc
+LOCAL_SRC_FILES    := init.qcom.usb.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
@@ -57,7 +48,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.usb.diag.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.usb.diag.rc
+LOCAL_SRC_FILES    := init.qcom.usb.diag.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
@@ -65,7 +56,7 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := ueventd.qcom.rc
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/ueventd.qcom.rc
+LOCAL_SRC_FILES    := ueventd.qcom.rc
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
@@ -73,24 +64,15 @@ include $(CLEAR_VARS)
 LOCAL_MODULE       := init.qcom.sh
 LOCAL_MODULE_TAGS  := optional eng
 LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init.qcom.sh
+LOCAL_SRC_FILES    := init.qcom.sh
 LOCAL_MODULE_PATH  := $(TARGET_ROOT_OUT)
-include $(BUILD_PREBUILT)
-
-# Guyver
-include $(CLEAR_VARS)
-LOCAL_MODULE		:= init.ngb.rc
-LOCAL_MODULE_TAGS	:= optional eng
-LOCAL_MODULE_CLASS	:= ETC
-LOCAL_SRC_FILES		:= etc/init.ngb.rc
-LOCAL_MODULE_PATH	:= $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE		:= init.spectrum.rc
 LOCAL_MODULE_TAGS	:= optional eng
 LOCAL_MODULE_CLASS	:= ETC
-LOCAL_SRC_FILES		:= etc/init.spectrum.rc
+LOCAL_SRC_FILES		:= init.spectrum.rc
 LOCAL_MODULE_PATH	:= $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
 
@@ -98,6 +80,6 @@ include $(CLEAR_VARS)
 LOCAL_MODULE		:= init.spectrum.sh
 LOCAL_MODULE_TAGS	:= optional eng
 LOCAL_MODULE_CLASS	:= ETC
-LOCAL_SRC_FILES		:= etc/init.spectrum.sh
+LOCAL_SRC_FILES		:= init.spectrum.sh
 LOCAL_MODULE_PATH	:= $(TARGET_ROOT_OUT)
 include $(BUILD_PREBUILT)
