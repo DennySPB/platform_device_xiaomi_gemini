@@ -41,6 +41,8 @@ TARGET_OTA_ASSERT_DEVICE := gemini
 TARGET_BOOTLOADER_BOARD_NAME := msm8996
 TARGET_NO_BOOTLOADER := true
 
+TARGET_POWERHAL_VARIANT := hmp
+
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
 BOARD_KERNEL_CMDLINE := androidboot.hardware=qcom ehci-hcd.park=3 lpm_levels.sleep_disabled=1 cma=32M@0-0xffffffff androidboot.selinux=permissive
@@ -55,16 +57,22 @@ TARGET_KERNEL_HEADER_ARCH := arm64
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/kernel-tc/android-toolchain-arm64/bin
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
 
-#Stock kernel build definitions
+ifeq ($(TARGET_POWERHAL_VARIANT),voxpopuli)
+#EAS kernel build definitions
+TARGET_KERNEL_CONFIG := mod_defconfig
+TARGET_KERNEL_SOURCE := kernel/xiaomi/eas_msm8996
+else
+ifeq ($(TARGET_POWERHAL_VARIANT),eas)
+#EAS kernel build definitions
+TARGET_KERNEL_CONFIG := mod_defconfig
+TARGET_KERNEL_SOURCE := kernel/xiaomi/eas_msm8996
+else
+#HMP kernel build definitions
 TARGET_KERNEL_CONFIG := gemini_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/hmp_msm8996
-#TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
-#EAS kernel build definitions
-#TARGET_KERNEL_CONFIG := mod_defconfig
-#TARGET_KERNEL_SOURCE := kernel/xiaomi/eas_msm8996
-
-
+endif #voxpopuli
+endif #eas
 
 # Platform
 TARGET_BOARD_PLATFORM := msm8996
