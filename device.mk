@@ -136,6 +136,7 @@ PRODUCT_PACKAGES += \
     consumerir.msm8996
 
 # Device init scripts
+
 PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
@@ -143,7 +144,14 @@ PRODUCT_PACKAGES += \
     init.qcom.usb.rc \
     init.qcom.usb.diag.rc \
     ueventd.qcom.rc \
-    init.qcom.sh
+    init.qcom.sh \
+    init.spectrum.rc \
+    init.spectrum.sh
+
+ifeq ($(TARGET_POWERHAL_VARIANT),hmp)
+PRODUCT_PACKAGES += \
+    init.qcom.power.rc
+endif
 
 # CMHW
 PRODUCT_PACKAGES += \
