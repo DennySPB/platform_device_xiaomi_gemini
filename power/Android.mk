@@ -1,30 +1,20 @@
-LOCAL_PATH := $(call my-dir)
+# Copyright (C) 2017 AEX.mod
 
-# HAL module implemenation stored in
-# hw/<POWERS_HARDWARE_MODULE_ID>.<ro.hardware>.so
-include $(CLEAR_VARS)
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 
-LOCAL_MODULE_RELATIVE_PATH := hw
-LOCAL_SHARED_LIBRARIES := liblog libcutils libdl
-LOCAL_SRC_FILES := power.c metadata-parser.c utils.c list.c hint-data.c
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 
-# Include target-specific files.
-ifeq ($(call is-board-platform-in-list, msm8996), true)
-LOCAL_SRC_FILES += power-8996.c
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+ifneq ($(TARGET_POWERHAL_VARIANT),voxpopuli)
+
+include $(all-subdir-makefiles)
+
 endif
-
-ifeq ($(TARGET_USES_INTERACTION_BOOST),true)
-    LOCAL_CFLAGS += -DINTERACTION_BOOST
-endif
-
-#ifneq ($(TARGET_USES_AOSP),true)
-#    LOCAL_CFLAGS += -DEXTRA_POWERHAL_HINTS
-#endif
-
-ifneq ($(TARGET_TAP_TO_WAKE_NODE),)
-  LOCAL_CFLAGS += -DTAP_TO_WAKE_NODE=\"$(TARGET_TAP_TO_WAKE_NODE)\"
-endif
-
-LOCAL_MODULE := power.msm8996
-LOCAL_MODULE_TAGS := optional
-include $(BUILD_SHARED_LIBRARY)
