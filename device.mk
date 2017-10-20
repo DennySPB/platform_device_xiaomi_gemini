@@ -146,12 +146,8 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc \
     init.qcom.sh \
     init.spectrum.rc \
+    init.qcom.power.rc \
     init.spectrum.sh
-
-ifeq ($(TARGET_POWERHAL_VARIANT),hmp)
-PRODUCT_PACKAGES += \
-    init.qcom.power.rc
-endif
 
 # CMHW
 PRODUCT_PACKAGES += \
