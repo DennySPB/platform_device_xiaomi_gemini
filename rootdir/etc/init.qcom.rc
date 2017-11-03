@@ -469,10 +469,10 @@ on property:sys.boot_completed=1
     chmod 0644 /d/rpm_master_stats
     write /dev/kmsg "Boot completed "
     # end boot time fs tune
-    write /sys/block/sda/queue/read_ahead_kb 128
-    write /sys/block/sda/queue/nr_requests 128
-    write /sys/block/dm-0/queue/read_ahead_kb 128
-    write /sys/block/dm-1/queue/read_ahead_kb 128
+    write /sys/block/sda/queue/read_ahead_kb 256
+    write /sys/block/sda/queue/nr_requests 256
+    write /sys/block/dm-0/queue/read_ahead_kb 256
+    write /sys/block/dm-1/queue/read_ahead_kb 256
     write /sys/block/sda/queue/iostats 1
 
     # CPE fw_name used by sound trigger HAL
@@ -482,6 +482,14 @@ on property:sys.boot_completed=1
     copy /dev/cpuctl/cpu.rt_runtime_us /dev/cpuctl/bg_non_interactive/cpu.rt_runtime_us
 
     write /sys/module/lpm_levels/parameters/sleep_disabled N
+
+    # Set Misc
+
+    write /sys/kernel/sched/arch_power 1
+    write /sys/kernel/sched/gentle_fair_sleepers 0
+    
+    # Disable FSync
+    write /sys/module/sync/parameters/fsync_enabled N
 
 on property:vold.decrypt=trigger_restart_framework
     start config_bt_addr
