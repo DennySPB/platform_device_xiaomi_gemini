@@ -143,7 +143,6 @@ PRODUCT_PACKAGES += \
     ueventd.qcom.rc \
     init.qcom.sh \
     init.spectrum.rc \
-    init.qcom.power.rc \
     init.spectrum.sh
 
 
